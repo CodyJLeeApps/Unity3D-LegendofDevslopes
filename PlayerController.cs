@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class PlayerController : MonoBehaviour {
 
 	[SerializeField] private float moveSpeed = 6;
-	[SerializeField] private float cameraTurnSpeed = 10f;
+	[SerializeField] private float cameraTurnSpeed = 2f;
 	[SerializeField] private LayerMask layerMask;
 
 	private CharacterController characterController;
@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour {
 		
 		if(!GameManager.instance.GameOver) {
 			Vector3 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			moveDirection = Camera.main.transform.TransformDirection(moveDirection);
 			characterController.SimpleMove(moveDirection * moveSpeed);
 
 			// Handle walking logic

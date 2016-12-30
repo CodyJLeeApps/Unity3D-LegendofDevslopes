@@ -251,35 +251,42 @@ public class GameManager : MonoBehaviour {
 		if(enemies.Count < currentLevel) {
 			int randomNumber = Random.Range(0, spawnPoints.Length-1);
 			GameObject spawnLocation = spawnPoints[randomNumber];
+			int randomEnemy = 0;
 
 			if(mapNumber == 1) { 
 
-				if(currentLevel < (finalLevel / 4)) { // spawn only level 1 soldiers and archers
+				if(currentLevel < 5) { // spawn only level 1 soldiers and archers
 					
-					Debug.Log("Level 1");
-					int randomEnemy = Random.Range(0, 2);
+					
+					Debug.Log("Level: " + currentLevel);
+					randomEnemy = Random.Range(0, 2);
+					Debug.Log("randEnemy: " + randomEnemy);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(soldier) as GameObject;
 					} else if(randomEnemy == 1) {
 						newEnemy = Instantiate(ranger_blue) as GameObject;
 					} 
-
-				} else if(currentLevel == (finalLevel / 4)) { // allow level 1 enemies and Tanker
 					
-					Debug.Log("Level 1 + Tanker");
-					int randomEnemy = Random.Range(0, 3);
-					if(randomEnemy == 0) {
-						newEnemy = Instantiate(soldier) as GameObject;
-					} else if(randomEnemy == 1) {
-						newEnemy = Instantiate(ranger_blue) as GameObject;
-					} else if(randomEnemy == 2) {
+
+				} else if(currentLevel == 5) { // allow level 1 enemies and Tanker
+					
+					Debug.Log("enemy number: " + enemies.Count);
+					if(enemies.Count == 0) {
 						newEnemy = Instantiate(tanker) as GameObject;
+					} else {
+						randomEnemy = Random.Range(0, 2);
+						if(randomEnemy == 0) {
+							newEnemy = Instantiate(soldier) as GameObject;
+						} else if(randomEnemy == 1) {
+							newEnemy = Instantiate(ranger_blue) as GameObject;
+						}
+						
 					}
 
-				} else if(currentLevel < (finalLevel / 2)) { // spawn only level 2 soldiers and archers
+				} else if(currentLevel < 10) { // spawn only level 2 soldiers and archers
 
 					Debug.Log("Level 2");
-					int randomEnemy = Random.Range(0, 4);
+					randomEnemy = Random.Range(0, 4);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(soldier) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -290,10 +297,10 @@ public class GameManager : MonoBehaviour {
 						newEnemy = Instantiate(ranger_green) as GameObject;
 					} 
 
-				} else if(currentLevel == (finalLevel / 2)) { // allow level 2 enemies and Tanker
+				} else if(currentLevel == 10) { // allow level 2 enemies and Tanker
 
 					Debug.Log("Level 2 + Tanker");
-					int randomEnemy = Random.Range(0, 5);
+					randomEnemy = Random.Range(0, 5);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(soldier) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -306,10 +313,10 @@ public class GameManager : MonoBehaviour {
 						newEnemy = Instantiate(tanker) as GameObject;
 					}
 
-				} else if(currentLevel < (finalLevel*(3/4))) { // spawn only level 3 soldiers and archers
+				} else if(currentLevel < 15) { // spawn only level 3 soldiers and archers
 
 					Debug.Log("Level 3");
-					int randomEnemy = Random.Range(0, 6);
+					randomEnemy = Random.Range(0, 6);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(soldier) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -324,10 +331,10 @@ public class GameManager : MonoBehaviour {
 						newEnemy = Instantiate(ranger_red) as GameObject;
 					}
 
-				} else if(currentLevel == (finalLevel*(3/4))) { // allow level 3 enemies and Tanker
+				} else if(currentLevel == 15) { // allow level 3 enemies and Tanker
 
 					Debug.Log("Level 3 + Tanker");
-					int randomEnemy = Random.Range(0, 7);
+					randomEnemy = Random.Range(0, 7);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(soldier) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -344,10 +351,10 @@ public class GameManager : MonoBehaviour {
 						newEnemy = Instantiate(tanker) as GameObject;
 					}
 
-				} else if(currentLevel <= finalLevel) { // allow all enemies and tanker
+				} else if(currentLevel <= 20) { // allow all enemies
 
 					Debug.Log("Level 4");
-					int randomEnemy = Random.Range(0, 8);
+					randomEnemy = Random.Range(0, 8);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(soldier) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -366,10 +373,10 @@ public class GameManager : MonoBehaviour {
 						newEnemy = Instantiate(ranger_yellow) as GameObject;
 					}
 
-				} else if(currentLevel == finalLevel) { // allow all enemies and tanker
+				} else if(currentLevel == 20) { // allow all enemies and tanker
 
 					Debug.Log("Level 4 + Tanker");
-					int randomEnemy = Random.Range(0, 9);
+					randomEnemy = Random.Range(0, 9);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(soldier) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -402,7 +409,7 @@ public class GameManager : MonoBehaviour {
 				} else if(currentLevel == (finalLevel / 4)) { // allow level 1
 					
 					Debug.Log("Skeleton Archer and Grunt (5)");
-					int randomEnemy = Random.Range(0, 2);
+					randomEnemy = Random.Range(0, 2);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(skeleton_archer) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -412,7 +419,7 @@ public class GameManager : MonoBehaviour {
 				} else if(currentLevel < (finalLevel / 2)) {
 
 					Debug.Log("Skeleton Archer, Swordsman (6 - 9)");
-					int randomEnemy = Random.Range(0, 2);
+					randomEnemy = Random.Range(0, 2);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(skeleton_archer) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -422,7 +429,7 @@ public class GameManager : MonoBehaviour {
 				} else if(currentLevel == (finalLevel / 2)) { // allow level 2 enemies and grunt
 
 					Debug.Log("Skeleton Archer, Swordsman, Grunt (10)");
-					int randomEnemy = Random.Range(0, 3);
+					randomEnemy = Random.Range(0, 3);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(skeleton_archer) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -434,7 +441,7 @@ public class GameManager : MonoBehaviour {
 				} else if(currentLevel <= (finalLevel*(3/4))) { // spawn only level 3 soldiers and archers
 
 					Debug.Log("Skeleton Archer, Swordsman, Mage (11 - 15)");
-					int randomEnemy = Random.Range(0, 3);
+					randomEnemy = Random.Range(0, 3);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(skeleton_archer) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -446,7 +453,7 @@ public class GameManager : MonoBehaviour {
 				} else if(currentLevel <= finalLevel) { // allow all enemies and tanker
 
 					Debug.Log("Skeleton Archer, Swordsman, Mage, Grunt (16 - 19)");
-					int randomEnemy = Random.Range(0, 4);
+					randomEnemy = Random.Range(0, 4);
 					if(randomEnemy == 0) {
 						newEnemy = Instantiate(skeleton_archer) as GameObject;
 					} else if(randomEnemy == 1) {
@@ -463,7 +470,7 @@ public class GameManager : MonoBehaviour {
 					if(enemies.Count == 1) {
 						newEnemy = Instantiate(skeleton_king) as GameObject;
 					} else {
-						int randomEnemy = Random.Range(0, 4);
+						randomEnemy = Random.Range(0, 4);
 						if(randomEnemy == 0) {
 							newEnemy = Instantiate(skeleton_archer) as GameObject;
 						} else if(randomEnemy == 1) {
